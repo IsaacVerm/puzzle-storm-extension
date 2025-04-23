@@ -66,6 +66,31 @@ CREATE TABLE puzzles (
 - generate a unique session ID based on the session statistics
 - send data to `puzzles` endpoint (same keys as in `puzzles` table defined in database schema above)
 
+The required fields can be found in tags on the page like this:
+
+```html
+</a><span class="puz-history__round__meta"><span
+    class="puz-history__round__result">
+    <bad>14s</bad>
+    <rating>1429</rating>
+</span><span class="puz-history__round__id">#XLANG</span></span></div>
+```
+
+```html
+</a><span class="puz-history__round__meta"><span
+    class="puz-history__round__result">
+    <good>11s</good>
+<rating>1312</rating>
+</span><span class="puz-history__round__id">#PTro2</span></span></div>
+```
+
+Fields and where they are to be found:
+
+- `puzzle_rating`: found in `<rating>` tag
+- `solved`: whether I found the solution to the puzzle or failed - if `<good>` tag is present value is 1. If `<bad>` tag is present value is 0.
+- `time_taken`: how long it took to solve the puzzle - value within `<good>` or `<bad>` (depending which of the two tags is present)
+- `id`: found in `<span>` tag with class `puz-history__round__id`
+
 ### Step 3: Implement the Popup UI
 
 - popup with button to send data extracted to `puzzles` endpoint
