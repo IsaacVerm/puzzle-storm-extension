@@ -2,6 +2,11 @@
 
 The idea is you try to finish as many puzzles as you can in 3 minutes. At the end you get an overview of the puzzles played and some summary statistics. You start with the easiest (lowest rating) puzzles first and progressively you get harder puzzles.
 
+## What I want to build
+
+I'd like to have a Firefox extension which offers a single button to save the data on the page. 
+
+
 ## What data to scrape
 
 I want to scrape the summary page and extract the following info:
@@ -15,4 +20,4 @@ I want to scrape the summary page and extract the following info:
 
 ## Where to save the data to
 
-I'd like to save the data to a `sqlite` database.
+I'd like to save the data to a `sqlite` database `puzzle-storm`.
