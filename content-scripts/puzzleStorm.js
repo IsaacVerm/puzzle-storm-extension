@@ -49,8 +49,19 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
         puzzlesData.push(puzzleData);
       });
       
-      console.log("Extracted puzzle data:", puzzlesData);
-      return puzzlesData;
+      console.log("Sending puzzle data to background script:", puzzlesData);
+    
+      // Send data to background script to make the API call
+      browser.runtime.sendMessage({
+        action: "sendPuzzleData",
+        data: puzzlesData
+      }).then(response => {
+        console.log("Response from background script:", response);
+      }).catch(error => {
+        console.error("Error sending message to background script:", error);
+      });
+      
+      sendResponse({success: true, message: "Data extraction complete"});
     }
 
     extractPuzzleData()

@@ -98,3 +98,7 @@ Fields and where they are to be found:
 ### Step 4: Implement `puzzles` endpoint
 
 Use Flask to create this endpoint which saves to `puzzles` table in `puzzles.db` `sqlite` database.
+
+### Step 5: Pass data extracted by content script to background script to call `puzzles` endpoint
+
+A common issue with browser extensions: content scripts can't make cross-origin requests due to same-origin policy restrictions. The solution is to have your content script extract the data, then send it to your background script which can make the API call.
