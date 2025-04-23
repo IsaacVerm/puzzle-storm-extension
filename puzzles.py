@@ -69,23 +69,6 @@ def save_puzzles():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route('/puzzles', methods=['GET'])
-def get_puzzles():
-    """Get all puzzles from the database"""
-    try:
-        conn = sqlite3.connect(DB_PATH)
-        conn.row_factory = sqlite3.Row  # Return rows as dictionaries
-        cursor = conn.cursor()
-        
-        cursor.execute('SELECT * FROM puzzles')
-        puzzles = [dict(row) for row in cursor.fetchall()]
-        
-        conn.close()
-        
-        return jsonify(puzzles), 200
-    
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
