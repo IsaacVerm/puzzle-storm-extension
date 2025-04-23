@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+    "name": "Puzzle Storm Saver",
+    "version": "1.0",
+    "description": "Saves Lichess Puzzle Storm data to a local database",
+    "permissions": [
+      "activeTab",
+      "storage",
+      "*://lichess.org/*"
+    ],
+    "browser_action": {
+      "default_title": "Puzzle Storm Saver",
+      "default_popup": "popup/popup.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://lichess.org/storm*"],
+        "js": ["content-scripts/puzzleStorm.js"]
+      }
+    ],
+    "background": {
+      "scripts": ["background.js"]
+    }
+  }
