@@ -1,0 +1,949 @@
+<html lang="en-US" class="light"><!-- Lichess is open source! See https://lichess.org/source -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' lichess1.org; connect-src 'self' blob: data: lichess1.org wss://socket0.lichess.org wss://socket3.lichess.org wss://socket1.lichess.org wss://socket4.lichess.org wss://socket2.lichess.org wss://socket5.lichess.org wss://cf-socket0.lichess.org wss://cf-socket1.lichess.org wss://cf-socket2.lichess.org https://explorer.lichess.ovh https://tablebase.lichess.ovh ; style-src 'self' 'unsafe-inline' lichess1.org; frame-src 'self' lichess1.org www.youtube.com player.twitch.tv player.vimeo.com; worker-src 'self' lichess1.org blob:; img-src 'self' blob: data: *; media-src 'self' blob: lichess1.org; script-src 'nonce-Xsz3PoEgKhlpoEAafZXsWleu' 'self' lichess1.org; font-src 'self' lichess1.org; base-uri 'none';">
+    <meta name="theme-color" content="#2e2a24">
+    <title>Puzzle Storm • lichess.org</title>
+    <link data-css-key="lib.theme.all" href="https://lichess1.org/assets/css/lib.theme.all.5eaa8e3f.css"
+        rel="stylesheet">
+    <link data-css-key="site" href="https://lichess1.org/assets/css/site.2d20c6b1.css" rel="stylesheet">
+    <link data-css-key="storm" href="https://lichess1.org/assets/css/storm.5172326c.css" rel="stylesheet">
+    <link id="piece-sprite" href="https://lichess1.org/assets/hashed/cburnett.99429b56.css" rel="stylesheet">
+    <meta
+        content="Free online chess server. Play chess in a clean interface. No registration, no ads, no plugin required. Play chess with the computer, friends or random opponents."
+        name="description">
+    <link rel="mask-icon" href="https://lichess1.org/assets/logo/lichess.svg" color="black">
+    <link rel="icon" type="image/png" href="https://lichess1.org/assets/logo/lichess-favicon-512.png" sizes="512x512">
+    <link rel="icon" type="image/png" href="https://lichess1.org/assets/logo/lichess-favicon-256.png" sizes="256x256">
+    <link rel="icon" type="image/png" href="https://lichess1.org/assets/logo/lichess-favicon-192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="https://lichess1.org/assets/logo/lichess-favicon-128.png" sizes="128x128">
+    <link rel="icon" type="image/png" href="https://lichess1.org/assets/logo/lichess-favicon-64.png" sizes="64x64">
+    <link id="favicon" rel="icon" type="image/png" href="https://lichess1.org/assets/logo/lichess-favicon-32.png"
+        sizes="32x32">
+    <meta name="google" content="notranslate">
+    <link href="/feed.atom" title="Lichess Updates Feed" type="application/atom+xml" rel="alternate">
+    <link rel="preload" href="https://lichess1.org/assets/hashed/lichess.a03cfe4c.woff2" as="font" type="font/woff2"
+        crossorigin="">
+    <link rel="preload" href="https://lichess1.org/assets/hashed/noto-sans-latin.086bfcad.woff2" as="font"
+        type="font/woff2" crossorigin="">
+    <link rel="preload" href="https://lichess1.org/assets/hashed/lichess-chess.02d5eb8f.woff2" as="font"
+        type="font/woff2" crossorigin="">
+    <link rel="preload" href="https://lichess1.org/assets/hashed/brown.8fd2d80d.png" as="image">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="alternate" hreflang="x-default" href="https://lichess.org/storm">
+    <link rel="alternate" hreflang="en" href="https://lichess.org/storm">
+    <link rel="alternate" hreflang="ru" href="https://lichess.org/ru/storm">
+    <link rel="alternate" hreflang="es" href="https://lichess.org/es/storm">
+    <link rel="alternate" hreflang="tr" href="https://lichess.org/tr/storm">
+    <link rel="alternate" hreflang="fr" href="https://lichess.org/fr/storm">
+    <link rel="alternate" hreflang="de" href="https://lichess.org/de/storm">
+    <link rel="alternate" hreflang="pt" href="https://lichess.org/pt/storm">
+    <link rel="alternate" hreflang="it" href="https://lichess.org/it/storm">
+    <link rel="alternate" hreflang="pl" href="https://lichess.org/pl/storm">
+    <link rel="alternate" hreflang="ar" href="https://lichess.org/ar/storm">
+    <link rel="alternate" hreflang="fa" href="https://lichess.org/fa/storm">
+    <link rel="alternate" hreflang="nl" href="https://lichess.org/nl/storm">
+    <link rel="alternate" hreflang="id" href="https://lichess.org/id/storm">
+    <link rel="alternate" hreflang="nb" href="https://lichess.org/nb/storm">
+    <link rel="alternate" hreflang="el" href="https://lichess.org/el/storm">
+    <link rel="alternate" hreflang="sv" href="https://lichess.org/sv/storm">
+    <link rel="alternate" hreflang="uk" href="https://lichess.org/uk/storm">
+    <link rel="alternate" hreflang="cs" href="https://lichess.org/cs/storm">
+    <link rel="alternate" hreflang="vi" href="https://lichess.org/vi/storm">
+    <link rel="alternate" hreflang="sr" href="https://lichess.org/sr/storm">
+    <link rel="alternate" hreflang="hr" href="https://lichess.org/hr/storm">
+    <style>
+        @font-face {
+            font-family: 'lichess';
+            font-display: block;
+            src: url('https://lichess1.org/assets/hashed/lichess.a03cfe4c.woff2') format('woff2')
+        }
+    </style>
+</head>
+
+<body class="system coords-in simple-board zenable zen-auto online playing"
+    data-vapid="BGr5CL0QlEYa7qW7HLqe7DFkCeTsYMLsi1Db-5Vwt1QBIs6-WxN8066AjtP8S9u-w-CbleE8xWY-qQaNEMs7sAs"
+    data-user="indexinator" data-username="indexinator" data-sound-set="standard"
+    data-socket-domains="socket0.lichess.org,socket3.lichess.org,socket1.lichess.org,socket4.lichess.org,socket2.lichess.org,socket5.lichess.org"
+    data-asset-url="https://lichess1.org" data-asset-version="KeJU1E" data-nonce="Xsz3PoEgKhlpoEAafZXsWleu"
+    data-theme="system" data-board="brown" data-piece-set="cburnett" data-board3d="Woodi" data-piece-set3d="Basic"
+    style="---board-opacity: 100; ---board-brightness: 100; ---board-hue: 0; ---zoom: 80; ---cg-width: 0px; ---cg-height: NaNpx;">
+    <form id="blind-mode" action="/run/toggle-blind-mode" method="POST"><input type="hidden" name="enable"
+            value="1"><input type="hidden" name="redirect" value="/storm"><button type="submit">Accessibility: Enable
+            blind mode</button></form>
+    <div id="zenzone"><a href="/" class="zen-home"></a><a data-icon="" id="zentog" class="text fbt active">Zen mode</a>
+    </div>
+    <header id="top">
+        <div class="site-title-nav">
+            <input type="checkbox" id="tn-tg" class="topnav-toggle fullscreen-toggle" autocomplete="off"
+                aria-label="Navigation">
+            <label for="tn-tg" class="fullscreen-mask"></label>
+            <label for="tn-tg" class="hbg"><span class="hbg__in"></span></label><a class="site-title" href="/">
+                <div class="site-icon" data-icon=""></div>
+                <div class="site-name">lichess<span>.org</span></div>
+            </a>
+            <nav id="topnav" class="">
+                <section><a href="/"><span class="play">Play</span><span class="home">lichess.org</span></a>
+                    <div role="group"><a href="/?any#hook">Create a game</a><a href="/tournament">Arena
+                            tournaments</a><a href="/swiss">Swiss tournaments</a><a href="/simul">Simultaneous
+                            exhibitions</a></div>
+                </section>
+                <section><a href="/training">Puzzles</a>
+                    <div role="group"><a href="/training">Puzzles</a><a href="/training/themes">Puzzle Themes</a><a
+                            href="/training/dashboard/30">Puzzle Dashboard</a><a href="/streak">Puzzle Streak</a><a
+                            href="/storm">Puzzle Storm</a><a href="/racer">Puzzle Racer</a></div>
+                </section>
+                <section><a href="/learn">Learn</a>
+                    <div role="group"><a href="/learn">Chess basics</a><a href="/practice">Practice</a><a
+                            href="/training/coordinate">Coordinates</a><a href="/study">Study</a><a
+                            href="/coach">Coaches</a></div>
+                </section>
+                <section><a href="/broadcast">Watch</a>
+                    <div role="group"><a href="/broadcast">Broadcasts</a><a href="/tv">Lichess TV</a><a
+                            href="/games">Current games</a><a href="/streamer">Streamers</a><a href="/video">Video
+                            library</a></div>
+                </section>
+                <section><a href="/player">Community</a>
+                    <div role="group"><a href="/player">Players</a><a href="/@/indexinator/following">Friends</a><a
+                            href="/team">Teams</a><a href="/forum">Forum</a><a href="/blog/community">Blog</a></div>
+                </section>
+                <section><a href="/analysis">Tools</a>
+                    <div role="group"><a href="/analysis">Analysis board</a><a href="/opening">Openings</a><a
+                            href="/editor">Board editor</a><a href="/paste">Import game</a><a
+                            href="/games/search">Advanced search</a></div>
+                </section>
+            </nav>
+        </div>
+        <div class="site-buttons">
+            <div id="warn-no-autoplay" class=""><a data-icon="" target="_blank" href="/faq#autoplay"></a></div>
+            <div id="clinput"><a class="link"><span data-icon=""></span></a><input spellcheck="false"
+                    autocomplete="false" aria-label="Search" placeholder="Search" enterkeyhint="search"></div>
+            <div><button id="challenge-toggle" class="toggle link"><span title="Challenges: 0" role="status"
+                        aria-label="Challenges: 0" class="data-count" data-count="0" data-icon=""></span></button>
+                <div id="challenge-app" class="dropdown"></div>
+            </div>
+            <div><button id="notify-toggle" class="toggle link"><span title="Notifications: 0" role="status"
+                        aria-label="Notifications: 0" class="data-count" data-count="0" data-icon=""></span></button>
+                <div id="notify-app" class="dropdown"></div>
+            </div>
+            <div class="dasher"><a id="user_tag" class="toggle link">indexinator</a>
+                <div id="dasher_app" class="dropdown"></div>
+            </div>
+        </div>
+    </header>
+    <div id="main-wrap" class="is2d">
+        <main>
+            <main class="storm storm--end">
+                <div class="storm--end__score"><span class="storm--end__score__number">17</span>
+                    <p>puzzles solved</p>
+                </div>
+                <div class="storm--end__stats box box-pad">
+                    <table class="slist">
+                        <tbody>
+                            <tr>
+                                <th>Moves</th>
+                                <td>
+                                    <number>44</number>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Accuracy</th>
+                                <td>
+                                    <number>84.1</number>%
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Combo</th>
+                                <td>
+                                    <number>18</number>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Time</th>
+                                <td>
+                                    <number>124</number>s
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Time per move</th>
+                                <td>
+                                    <number>2.82</number>s
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Highest solved</th>
+                                <td>
+                                    <number>1312</number>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><a class="storm-play-again button" href="/storm">Play again</a>
+                <div class="puz-history box box-pad">
+                    <div class="box__top">
+                        <h2>Puzzles played</h2>
+                        <div class="box__top__actions"><button class="puz-history__filter button">Failed
+                                puzzles</button><button class="puz-history__filter button">Slow puzzles</button></div>
+                    </div>
+                    <div class="puz-history__rounds">
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/kjJMV" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(24px, 24px);"></square>
+                                        <square class="last-move" style="transform: translate(24px);"></square>
+                                        <piece class="black rook" style="transform: translate(48px, 168px);"></piece>
+                                        <piece class="black king" style="transform: translate(0px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 96px);"></piece>
+                                        <piece class="white rook" style="transform: translate(72px, 96px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(120px, 72px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="black rook" style="transform: translate(96px, 24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(144px);"></piece>
+                                        <piece class="white king" style="transform: translate(0px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <bad>2s</bad>
+                                    <rating>1429</rating>
+                                </span><span class="puz-history__round__id">#kjJMV</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/XLANG" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(96px, 24px);"></square>
+                                        <square class="last-move" style="transform: translate(144px);"></square>
+                                        <piece class="black rook" style="transform: translate(168px, 168px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(48px, 168px);"></piece>
+                                        <piece class="black knight" style="transform: translate(24px, 168px);"></piece>
+                                        <piece class="black rook" style="transform: translate(0px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 144px);"></piece>
+                                        <piece class="black king" style="transform: translate(96px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(48px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 144px);"></piece>
+                                        <piece class="black queen" style="transform: translate(144px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(72px, 120px);"></piece>
+                                        <piece class="black knight" style="transform: translate(168px, 96px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(72px, 96px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(48px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(96px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 48px);"></piece>
+                                        <piece class="white queen" style="transform: translate(120px, 48px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(72px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white knight" style="transform: translate(96px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(168px);"></piece>
+                                        <piece class="white king" style="transform: translate(72px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(48px);"></piece>
+                                        <piece class="white knight" style="transform: translate(24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(0px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <bad>14s</bad>
+                                    <rating>1429</rating>
+                                </span><span class="puz-history__round__id">#XLANG</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/sfwnF" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(48px, 24px);"></square>
+                                        <square class="last-move" style="transform: translate(24px, 48px);"></square>
+                                        <piece class="black king" style="transform: translate(96px, 168px);"></piece>
+                                        <piece class="black rook" style="transform: translate(72px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(120px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(72px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 120px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(96px, 96px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 72px);"></piece>
+                                        <piece class="white knight" style="transform: translate(120px, 48px);"></piece>
+                                        <piece class="white rook" style="transform: translate(96px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(72px, 48px);"></piece>
+                                        <piece class="white rook" style="transform: translate(48px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(120px, 24px);"></piece>
+                                        <piece class="white king" style="transform: translate(96px, 24px);"></piece>
+                                        <piece class="white queen" style="transform: translate(48px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="black rook" style="transform: translate(168px);"></piece>
+                                        <piece class="black queen" style="transform: translate(24px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <bad>5s</bad>
+                                    <rating>1314</rating>
+                                </span><span class="puz-history__round__id">#sfwnF</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/PTro2" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(120px);"></square>
+                                        <square class="last-move" style="transform: translate(48px);"></square>
+                                        <piece class="black king" style="transform: translate(24px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 144px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(72px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 120px);"></piece>
+                                        <piece class="black queen" style="transform: translate(144px, 120px);"></piece>
+                                        <piece class="black rook" style="transform: translate(96px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 96px);"></piece>
+                                        <piece class="white queen" style="transform: translate(48px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(72px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(96px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(120px);"></piece>
+                                        <piece class="white king" style="transform: translate(0px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>11s</good>
+                                    <rating>1312</rating>
+                                </span><span class="puz-history__round__id">#PTro2</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/MuC8P" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(72px, 24px);"></square>
+                                        <square class="last-move" style="transform: translate(48px, 48px);"></square>
+                                        <piece class="black rook" style="transform: translate(48px, 168px);"></piece>
+                                        <piece class="black king" style="transform: translate(0px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 120px);"></piece>
+                                        <piece class="white queen" style="transform: translate(96px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(72px, 96px);"></piece>
+                                        <piece class="black rook" style="transform: translate(48px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 72px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 72px);"></piece>
+                                        <piece class="black queen" style="transform: translate(0px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(120px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(96px, 48px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(96px, 24px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(72px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                        <piece class="white knight" style="transform: translate(120px);"></piece>
+                                        <piece class="white rook" style="transform: translate(48px);"></piece>
+                                        <piece class="white king" style="transform: translate(24px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>5s</good>
+                                    <rating>1303</rating>
+                                </span><span class="puz-history__round__id">#MuC8P</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/Hu0jd" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(72px);"></square>
+                                        <square class="last-move" style="transform: translate(96px);"></square>
+                                        <piece class="black rook" style="transform: translate(72px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 144px);"></piece>
+                                        <piece class="black king" style="transform: translate(0px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 96px);"></piece>
+                                        <piece class="white queen" style="transform: translate(0px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 72px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(48px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(120px, 48px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(48px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(72px);"></piece>
+                                        <piece class="white king" style="transform: translate(48px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <bad>2s</bad>
+                                    <rating>1300</rating>
+                                </span><span class="puz-history__round__id">#Hu0jd</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/cAcFe" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(96px, 96px);"></square>
+                                        <square class="last-move" style="transform: translate(120px, 48px);"></square>
+                                        <piece class="black rook" style="transform: translate(168px, 168px);"></piece>
+                                        <piece class="black knight" style="transform: translate(144px, 168px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(120px, 168px);"></piece>
+                                        <piece class="black rook" style="transform: translate(48px, 168px);"></piece>
+                                        <piece class="black king" style="transform: translate(24px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(48px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 144px);"></piece>
+                                        <piece class="black queen" style="transform: translate(48px, 120px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(120px, 96px);"></piece>
+                                        <piece class="white knight" style="transform: translate(96px, 96px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(96px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(120px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(168px);"></piece>
+                                        <piece class="white queen" style="transform: translate(96px);"></piece>
+                                        <piece class="white king" style="transform: translate(72px);"></piece>
+                                        <piece class="white knight" style="transform: translate(24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(0px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>3s</good>
+                                    <rating>1295</rating>
+                                </span><span class="puz-history__round__id">#cAcFe</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/4rxwN" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(48px, 168px);"></square>
+                                        <square class="last-move" style="transform: translate(72px, 120px);"></square>
+                                        <piece class="white knight" style="transform: translate(48px, 168px);"></piece>
+                                        <piece class="black king" style="transform: translate(24px, 168px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(24px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(120px, 120px);"></piece>
+                                        <piece class="black queen" style="transform: translate(48px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 96px);"></piece>
+                                        <piece class="white queen" style="transform: translate(0px, 96px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(120px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(72px);"></piece>
+                                        <piece class="white king" style="transform: translate(24px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>4s</good>
+                                    <rating>1293</rating>
+                                </span><span class="puz-history__round__id">#4rxwN</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/ccNyt" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(96px, 24px);"></square>
+                                        <square class="last-move" style="transform: translate(96px);"></square>
+                                        <piece class="black rook" style="transform: translate(96px, 168px);"></piece>
+                                        <piece class="black king" style="transform: translate(48px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 144px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 96px);"></piece>
+                                        <piece class="white rook" style="transform: translate(72px, 72px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(144px, 48px);"></piece>
+                                        <piece class="black knight" style="transform: translate(120px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 48px);"></piece>
+                                        <piece class="white rook" style="transform: translate(96px, 24px);"></piece>
+                                        <piece class="white king" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <bad>2s</bad>
+                                    <rating>1293</rating>
+                                </span><span class="puz-history__round__id">#ccNyt</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/NSVYJ" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(72px, 96px);"></square>
+                                        <square class="last-move" style="transform: translate(96px, 72px);"></square>
+                                        <piece class="black rook" style="transform: translate(144px, 168px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(72px, 168px);"></piece>
+                                        <piece class="black king" style="transform: translate(24px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(120px, 120px);"></piece>
+                                        <piece class="white knight" style="transform: translate(72px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 96px);"></piece>
+                                        <piece class="white queen" style="transform: translate(72px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 72px);"></piece>
+                                        <piece class="white king" style="transform: translate(120px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(96px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 24px);"></piece>
+                                        <piece class="black queen" style="transform: translate(48px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <bad>3s</bad>
+                                    <rating>1287</rating>
+                                </span><span class="puz-history__round__id">#NSVYJ</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/Aw3Rz" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(0px, 48px);"></square>
+                                        <square class="last-move" style="transform: translate(0px, 24px);"></square>
+                                        <piece class="white queen" style="transform: translate(24px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(72px, 144px);"></piece>
+                                        <piece class="white rook" style="transform: translate(48px, 144px);"></piece>
+                                        <piece class="black queen" style="transform: translate(96px, 120px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(72px, 120px);"></piece>
+                                        <piece class="black king" style="transform: translate(0px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(120px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 48px);"></piece>
+                                        <piece class="white king" style="transform: translate(0px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 24px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(24px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>8s</good>
+                                    <rating>1173</rating>
+                                </span><span class="puz-history__round__id">#Aw3Rz</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/kHwLI" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(120px, 72px);"></square>
+                                        <square class="last-move" style="transform: translate(48px);"></square>
+                                        <piece class="black rook" style="transform: translate(168px, 168px);"></piece>
+                                        <piece class="black knight" style="transform: translate(144px, 168px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(120px, 168px);"></piece>
+                                        <piece class="black king" style="transform: translate(72px, 168px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(48px, 168px);"></piece>
+                                        <piece class="black rook" style="transform: translate(0px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(120px, 144px);"></piece>
+                                        <piece class="black queen" style="transform: translate(72px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 144px);"></piece>
+                                        <piece class="black knight" style="transform: translate(48px, 120px);"></piece>
+                                        <piece class="white knight" style="transform: translate(24px, 96px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(120px, 72px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(72px, 72px);"></piece>
+                                        <piece class="white knight" style="transform: translate(24px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(120px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(168px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(120px);"></piece>
+                                        <piece class="white queen" style="transform: translate(96px);"></piece>
+                                        <piece class="white king" style="transform: translate(72px);"></piece>
+                                        <piece class="white rook" style="transform: translate(0px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>3s</good>
+                                    <rating>1169</rating>
+                                </span><span class="puz-history__round__id">#kHwLI</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/XWpej" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(48px, 120px);"></square>
+                                        <square class="last-move" style="transform: translate(48px);"></square>
+                                        <piece class="white queen" style="transform: translate(120px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 144px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(120px, 120px);"></piece>
+                                        <piece class="black queen" style="transform: translate(72px, 120px);"></piece>
+                                        <piece class="white rook" style="transform: translate(48px, 120px);"></piece>
+                                        <piece class="black king" style="transform: translate(24px, 120px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 120px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 96px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(72px, 96px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 96px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 72px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(72px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white king" style="transform: translate(0px, 24px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>5s</good>
+                                    <rating>1159</rating>
+                                </span><span class="puz-history__round__id">#XWpej</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/2gPh9" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(0px, 24px);"></square>
+                                        <square class="last-move" style="transform: translate(0px);"></square>
+                                        <piece class="black king" style="transform: translate(24px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(120px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(96px, 72px);"></piece>
+                                        <piece class="black queen" style="transform: translate(24px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 48px);"></piece>
+                                        <piece class="white knight" style="transform: translate(120px, 48px);"></piece>
+                                        <piece class="white queen" style="transform: translate(72px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(120px, 24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white king" style="transform: translate(0px, 24px);"></piece>
+                                        <piece class="black rook" style="transform: translate(48px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>6s</good>
+                                    <rating>1154</rating>
+                                </span><span class="puz-history__round__id">#2gPh9</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/1h4dc" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(72px, 48px);"></square>
+                                        <square class="last-move" style="transform: translate(120px);"></square>
+                                        <piece class="black rook" style="transform: translate(168px, 168px);"></piece>
+                                        <piece class="black rook" style="transform: translate(48px, 168px);"></piece>
+                                        <piece class="black king" style="transform: translate(24px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(48px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 120px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(96px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 96px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 96px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(48px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(96px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(120px, 48px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(72px, 48px);"></piece>
+                                        <piece class="white queen" style="transform: translate(48px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 48px);"></piece>
+                                        <piece class="black queen" style="transform: translate(0px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(168px);"></piece>
+                                        <piece class="white knight" style="transform: translate(144px);"></piece>
+                                        <piece class="white rook" style="transform: translate(72px);"></piece>
+                                        <piece class="white king" style="transform: translate(24px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>3s</good>
+                                    <rating>1152</rating>
+                                </span><span class="puz-history__round__id">#1h4dc</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/v7RM9" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(120px, 24px);"></square>
+                                        <square class="last-move" style="transform: translate(144px);"></square>
+                                        <piece class="black king" style="transform: translate(120px, 168px);"></piece>
+                                        <piece class="black rook" style="transform: translate(72px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(120px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(48px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 144px);"></piece>
+                                        <piece class="white queen" style="transform: translate(120px, 120px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 96px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white king" style="transform: translate(120px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                        <piece class="black rook" style="transform: translate(96px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(48px);"></piece>
+                                        <piece class="white rook" style="transform: translate(0px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>3s</good>
+                                    <rating>1140</rating>
+                                </span><span class="puz-history__round__id">#v7RM9</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/ATof5" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(168px, 120px);"></square>
+                                        <square class="last-move" style="transform: translate(168px, 168px);"></square>
+                                        <piece class="black rook" style="transform: translate(48px, 144px);"></piece>
+                                        <piece class="white rook" style="transform: translate(168px, 120px);"></piece>
+                                        <piece class="white king" style="transform: translate(96px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 24px);"></piece>
+                                        <piece class="black king" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>4s</good>
+                                    <rating>1120</rating>
+                                </span><span class="puz-history__round__id">#ATof5</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/kOPeE" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(24px, 96px);"></square>
+                                        <square class="last-move" style="transform: translate(96px, 96px);"></square>
+                                        <piece class="white rook" style="transform: translate(24px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(96px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 72px);"></piece>
+                                        <piece class="black king" style="transform: translate(48px, 48px);"></piece>
+                                        <piece class="black rook" style="transform: translate(96px, 24px);"></piece>
+                                        <piece class="white king" style="transform: translate(48px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>2s</good>
+                                    <rating>1093</rating>
+                                </span><span class="puz-history__round__id">#kOPeE</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/DqtZp" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(120px, 72px);"></square>
+                                        <square class="last-move" style="transform: translate(96px, 48px);"></square>
+                                        <piece class="black rook" style="transform: translate(168px, 168px);"></piece>
+                                        <piece class="black king" style="transform: translate(72px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(48px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 120px);"></piece>
+                                        <piece class="black knight" style="transform: translate(48px, 120px);"></piece>
+                                        <piece class="white queen" style="transform: translate(0px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(120px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(96px, 96px);"></piece>
+                                        <piece class="black queen" style="transform: translate(72px, 96px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(120px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                        <piece class="white king" style="transform: translate(48px);"></piece>
+                                        <piece class="white rook" style="transform: translate(0px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>4s</good>
+                                    <rating>1089</rating>
+                                </span><span class="puz-history__round__id">#DqtZp</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/acuV6" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(48px);"></square>
+                                        <square class="last-move" style="transform: translate(24px);"></square>
+                                        <piece class="black rook" style="transform: translate(168px, 168px);"></piece>
+                                        <piece class="black king" style="transform: translate(72px, 168px);"></piece>
+                                        <piece class="black rook" style="transform: translate(0px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(120px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(48px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(120px, 120px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(72px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(96px, 72px);"></piece>
+                                        <piece class="black queen" style="transform: translate(72px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(120px, 48px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(72px, 48px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white knight" style="transform: translate(96px, 24px);"></piece>
+                                        <piece class="white queen" style="transform: translate(72px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(168px);"></piece>
+                                        <piece class="white rook" style="transform: translate(72px);"></piece>
+                                        <piece class="white king" style="transform: translate(48px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <bad>2s</bad>
+                                    <rating>1081</rating>
+                                </span><span class="puz-history__round__id">#acuV6</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/de3hj" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(24px, 144px);"></square>
+                                        <square class="last-move" style="transform: translate(168px, 144px);"></square>
+                                        <piece class="black rook" style="transform: translate(0px, 168px);"></piece>
+                                        <piece class="white queen" style="transform: translate(24px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(120px, 120px);"></piece>
+                                        <piece class="black king" style="transform: translate(96px, 120px);"></piece>
+                                        <piece class="black knight" style="transform: translate(48px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 96px);"></piece>
+                                        <piece class="black queen" style="transform: translate(0px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(72px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                        <piece class="white rook" style="transform: translate(96px);"></piece>
+                                        <piece class="white king" style="transform: translate(72px);"></piece>
+                                        <piece class="white rook" style="transform: translate(0px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>18s</good>
+                                    <rating>1065</rating>
+                                </span><span class="puz-history__round__id">#de3hj</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/3cgFU" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(120px, 48px);"></square>
+                                        <square class="last-move" style="transform: translate(144px, 72px);"></square>
+                                        <piece class="black rook" style="transform: translate(144px, 168px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 48px);"></piece>
+                                        <piece class="white king" style="transform: translate(120px, 48px);"></piece>
+                                        <piece class="white rook" style="transform: translate(24px, 48px);"></piece>
+                                        <piece class="black king" style="transform: translate(168px, 24px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>3s</good>
+                                    <rating>1046</rating>
+                                </span><span class="puz-history__round__id">#3cgFU</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/QSojF" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(144px, 168px);"></square>
+                                        <square class="last-move" style="transform: translate(120px, 168px);"></square>
+                                        <piece class="white rook" style="transform: translate(144px, 168px);"></piece>
+                                        <piece class="black rook" style="transform: translate(96px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(24px, 144px);"></piece>
+                                        <piece class="black king" style="transform: translate(0px, 144px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(144px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(48px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(72px, 96px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(72px, 72px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 48px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(0px, 24px);"></piece>
+                                        <piece class="white king" style="transform: translate(24px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>10s</good>
+                                    <rating>1018</rating>
+                                </span><span class="puz-history__round__id">#QSojF</span></span></div>
+                        <div class="puz-history__round"><a
+                                class="puz-history__round__puzzle mini-board cg-wrap is2d orientation-black"
+                                href="/training/ZgpaO" target="_blank"><cg-container
+                                    style="width: 192px; height: 192px;"><cg-board>
+                                        <square class="last-move" style="transform: translate(72px, 120px);"></square>
+                                        <square class="last-move" style="transform: translate(96px, 96px);"></square>
+                                        <piece class="black rook" style="transform: translate(144px, 168px);"></piece>
+                                        <piece class="black king" style="transform: translate(24px, 168px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(120px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(48px, 144px);"></piece>
+                                        <piece class="black bishop" style="transform: translate(24px, 144px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(168px, 120px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(120px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(96px, 120px);"></piece>
+                                        <piece class="white queen" style="transform: translate(72px, 120px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(0px, 120px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(168px, 96px);"></piece>
+                                        <piece class="black pawn" style="transform: translate(144px, 96px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(48px, 72px);"></piece>
+                                        <piece class="white rook" style="transform: translate(24px, 48px);"></piece>
+                                        <piece class="white bishop" style="transform: translate(48px, 24px);"></piece>
+                                        <piece class="white pawn" style="transform: translate(24px, 24px);"></piece>
+                                        <piece class="white king" style="transform: translate(24px);"></piece>
+                                    </cg-board>
+                                    <piece class="ghost" style="visibility: hidden;"></piece>
+                                </cg-container></a><span class="puz-history__round__meta"><span
+                                    class="puz-history__round__result">
+                                    <good>0s</good>
+                                    <rating>1000</rating>
+                                </span><span class="puz-history__round__id">#ZgpaO</span></span></div>
+                    </div>
+                </div>
+            </main>
+            <div class="storm-play-scores"><span>Highscores</span><a href="/storm/dashboard">View best runs »</a></div>
+            <div class="storm-dashboard__high__periods">
+                <div class="storm-dashboard__high__period"><strong>31</strong><span>All-time</span></div>
+                <div class="storm-dashboard__high__period"><strong>31</strong><span>This month</span></div>
+                <div class="storm-dashboard__high__period"><strong>25</strong><span>This week</span></div>
+                <div class="storm-dashboard__high__period"><strong>21</strong><span>Today</span></div>
+            </div>
+            <div class="storm__about__link"><a href="/page/storm">About Puzzle Storm</a></div>
+        </main>
+    </div>
+    <div id="friend_box">
+        <div class="friend_box_title"><i data-icon=""></i> friends online</div>
+        <div class="content_wrap none">
+            <div class="content list"></div>
+        </div>
+    </div><a id="network-status" class="link text" data-icon=""></a><svg width="0" height="0">
+        <mask id="mask">
+            <path fill="#fff" stroke="#fff" stroke-linejoin="round"
+                d="M38.956.5c-3.53.418-6.452.902-9.286 2.984C5.534 1.786-.692 18.533.68 29.364 3.493 50.214 31.918 55.785 41.329 41.7c-7.444 7.696-19.276 8.752-28.323 3.084C3.959 39.116-.506 27.392 4.683 17.567 9.873 7.742 18.996 4.535 29.03 6.405c2.43-1.418 5.225-3.22 7.655-3.187l-1.694 4.86 12.752 21.37c-.439 5.654-5.459 6.112-5.459 6.112-.574-1.47-1.634-2.942-4.842-6.036-3.207-3.094-17.465-10.177-15.788-16.207-2.001 6.967 10.311 14.152 14.04 17.663 3.73 3.51 5.426 6.04 5.795 6.756 0 0 9.392-2.504 7.838-8.927L37.4 7.171z">
+            </path>
+        </mask>
+    </svg><deepl-input-controller></deepl-input-controller><protonpass-root-e88f data-protonpass-role="root"
+        data-protonpass-theme="dark"></protonpass-root-e88f>
+</body>
+
+</html>
