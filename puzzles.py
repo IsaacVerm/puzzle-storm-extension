@@ -69,6 +69,45 @@ def save_puzzles():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/puzzles', methods=['GET'])
+def get_puzzles():
+    """Fetch puzzles from the database with optional filters"""
+    try:
+        # Get query parameters
+        n = request.args.get('n', default=10, type=int)
+        solved = request.args.get('solved', default=None, type=int)
+        
+        # Connect to database
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        
+        # Build the query
+        query = "SELECT * FROM puzzles"
+        params = []
+        
+        # Add solved filter if specified
+        if solved is not None:
+            query += " WHERE solved = ?"
+            params.append(solved)
+        
+        # Add random ordering and limit
+        query += " ORDER BY RANDOM() LIMIT ?"
+        params.append(n)
+        
+        # Execute query
+        cursor.execute(query, params)
+        puzzles = cursor.fetchall()
+        
+        # Convert to list of dictionaries
+        column_names = ['id', 'session_id', 'puzzle_rating', 'solved', 'time_taken']
+        result = [dict(zip(column_names, puzzle)) for puzzle in puzzles]
+        
+        conn.close()
+        
+        return jsonify(result), 200
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
