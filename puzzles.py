@@ -17,7 +17,9 @@ def init_db():
         cursor.execute('''
         CREATE TABLE puzzles (
             id TEXT,
-            session_id TEXT,
+            timestamp INTEGER,
+            date TEXT,
+            time TEXT,
             puzzle_rating INTEGER,
             solved INTEGER,
             time_taken INTEGER
@@ -46,16 +48,18 @@ def save_puzzles():
         # Insert each puzzle
         for puzzle in data:
             # Validate required fields
-            required_fields = ['id', 'session_id', 'puzzle_rating', 'solved', 'time_taken']
+            required_fields = ['id', 'timestamp', 'date', 'time', 'puzzle_rating', 'solved', 'time_taken']
             if not all(field in puzzle for field in required_fields):
                 return jsonify({"error": f"Missing required fields in puzzle data: {puzzle}"}), 400
             
             cursor.execute('''
-            INSERT INTO puzzles (id, session_id, puzzle_rating, solved, time_taken)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO puzzles (id, timestamp, date, time, puzzle_rating, solved, time_taken)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
             ''', (
                 puzzle['id'], 
-                puzzle['session_id'], 
+                puzzle['timestamp'],
+                puzzle['date'],
+                puzzle['time'], 
                 puzzle['puzzle_rating'], 
                 puzzle['solved'], 
                 puzzle['time_taken']

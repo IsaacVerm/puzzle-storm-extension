@@ -34,13 +34,18 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
           timeTaken = parseTimeToSeconds(badElement.textContent.trim());
         }
         
-        // Generate a simple session ID based on timestamp
-        const sessionId = Date.now().toString();
-        
+        // time-related data
+        const now = new Date();
+        const timestamp = Date.now().toString();
+        const date = `${now.getDate().toString().padStart(2, '0')}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getFullYear()}`;
+        const time = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
         // Create puzzle data object
         const puzzleData = {
           id: id,
-          session_id: sessionId,
+          timestamp: timestamp,
+          date: date,
+          time: time,
           puzzle_rating: puzzleRating,
           solved: solved,
           time_taken: timeTaken
