@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lichess Puzzle Opener</title>
+</head>
+
+<body>
+    <h1>Lichess Puzzle Opener</h1>
+    <button id="openPuzzles">Open Failed Puzzles</button>
+
+    <script>
+        document.getElementById('openPuzzles').addEventListener('click', async function () {
+            const response = await fetch('http://127.0.0.1:5000/puzzles?n=5&solved=0');
+
+            const failedPuzzles = await response.json();
+
+            failedPuzzles.forEach(puzzle => {
+                const puzzleUrl = `https://lichess.org/training/${puzzle.id}`;
+                window.open(puzzleUrl, '_blank');
+            });
+        });
+    </script>
+</body>
+
+</html>
