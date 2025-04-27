@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
         browser.tabs.sendMessage(tabs[0].id, {action: "manualSave"})
           .then(response => {
             if (response && response.success) {
-              statusDiv.textContent = "Data saved successfully!";
+              statusDiv.textContent = "Puzzles saved to local database.";
             } else {
-              statusDiv.textContent = "Failed to save data. Are you on a Puzzle Storm page?";
+              statusDiv.textContent = "Failed to save puzzles to local database.";
             }
           })
           .catch(error => {
